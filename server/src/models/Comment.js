@@ -23,7 +23,7 @@ class Comment extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['content', 'postTime'],
+            required: ['content'],
             properties: {
                 id: {type: 'integer'},
                 content: { type: 'string', minLength: 1, maxLength: 750},

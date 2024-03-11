@@ -44,14 +44,14 @@ class Cookbook extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['id', 'title', 'author', 'categoryId'],
+            required: [ 'title', 'author', 'categoryId'],
             properties: {
                 id: {type: 'integer'},
-                title: { type: 'string', minLength: 1, maxLength: 100},
-                author: { type: 'string', minLength: 1, maxLength: 100},
+                title: { type: 'string', minLength: 1, maxLength: 500},
+                author: { type: 'string', minLength: 1, maxLength: 250},
                 categoryId: { type: 'integer'},
-                description: { type: 'string', minLength: 1, maxLength: 200},
-                publicationDate: { type: 'date'}
+                description: { type: 'string', minLength: 1, maxLength: 750},
+                publicationDate: { type: 'string', format: 'date-time'}
             }
         }
     } 

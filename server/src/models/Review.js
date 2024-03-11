@@ -31,14 +31,14 @@ class Review extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['content', 'rating', 'cookbookId', 'userId'],
+            required: ['content', 'rating'],
             properties: {
                 id: {type: 'integer'},
                 content: { type: 'string', minLength: 1, maxLength: 750},
                 rating: { type: 'integer' },
                 cookbookId: { type: 'integer' },
                 userId: { type: 'integer' },
-                postTime: { type: 'string', format: 'date-time' },
+                postTime: { type: 'string', format: 'date-time' }
             }
         }
     }
