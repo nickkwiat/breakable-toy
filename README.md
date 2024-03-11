@@ -72,3 +72,4 @@ The application will have all configurations set up with the name `engage-boiler
    ```
 
 6. Navigate to <http://localhost:3000>. You should see the text "Hello from react". Ensure you can sign up, sign in, and sign out users.
+this is for feature cook-booklist: establish database & models
