@@ -15,7 +15,7 @@ class Cookbook extends Model {
                 author: { type: 'string', minLength: 1, maxLength: 100},
                 categoryId: { type: 'integer'},
                 description: { type: 'string', minLength: 1, maxLength: 200},
-                publicationDate: { type: 'date'}
+                publicationDate: { type: 'string'}
             }
         }
     } 

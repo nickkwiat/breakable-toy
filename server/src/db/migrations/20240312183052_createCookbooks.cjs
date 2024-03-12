@@ -11,7 +11,7 @@ exports.up = async (knex) => {
         table.string("title").notNullable()
         table.string("author").notNullable()
         table.string("description")
-        table.date("publicationDate")
+        table.string("publicationDate")
         table
             .timestamp("createdAt")
             .notNullable()
