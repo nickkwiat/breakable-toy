@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-
 import CookbookTile from "./CookbookTile"
 
-const CookbookList = () => {
+const CookbookList = props => {
     const [cookbooks, setCookbooks] = useState([])
+    const [errors, setErrors] = useState({})
 
     const getCookbooks = async () => {
         try{
@@ -25,6 +25,8 @@ const CookbookList = () => {
         getCookbooks()
     }, [])
 
+    // 
+
     const cookbookTiles = cookbooks.map(cookbookObject => {
         const { id, title, author, description, publicationDate } = cookbookObject
         return <CookbookTile key={id} title={title} author={author} description={description} publicationDate={publicationDate} />
@@ -34,6 +36,7 @@ const CookbookList = () => {
         <div>
             <h1>List of Cookbooks</h1>
             {cookbookTiles}
+            <Link to="/cookbooks/new">Add a Cookbook</Link>
         </div>
     )
 }

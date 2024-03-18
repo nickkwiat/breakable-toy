@@ -10,8 +10,8 @@ class CookbookSeeder {
                 publicationDate: "2017-08-17"
             },
             {
-                title: "Test Cookbook: Can You Smell What the Rock is Cooking",
-                author: "Dewayne Johnson",
+                title: "Can You Smell What the Rock is Cooking",
+                author: "Dwayne Johnson",
                 description: "Where geology and the world of culinary arts meet.",
                 publicationDate: "2024-01-01"
             }

@@ -10,6 +10,7 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 
+import CookbookForm from "./cookbooks/CookbookForm";
 import CookbookList from "./cookbooks/cookbookList";
 
 const App = (props) => {
@@ -32,6 +33,8 @@ const App = (props) => {
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/" component={CookbookList} />
+        <Route exact path="/cookbooks" component={CookbookList} />
+        <Route exact path="/cookbooks/new" component={CookbookForm} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
