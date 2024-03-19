@@ -35,8 +35,8 @@ const CookbookForm = () => {
                 if (response.status === 422) {
                     const body = await response.json()
                     const newErrors = translateServerErrors(body.errors)
-                    setErrors(newErrors); // Assuming this function returns an object
-                    return false; // Indicate failure
+                    setErrors(newErrors);
+                    return false; 
                 } else {
                     throw new Error(`Error: ${response.status}`);
                 }
@@ -46,18 +46,14 @@ const CookbookForm = () => {
             return true
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
-            return false // Indicate failure
+            return false 
         }
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        const success = await postCookbook(newCookbook)
-        if (success) {
-            console.log
-        } else {
-            console.log("Failed to create cookbook")
-        }
+        await postCookbook(newCookbook)
+
     }
 
 
@@ -72,19 +68,19 @@ const CookbookForm = () => {
 
     return (
         <div>
+            <h2>Add new cookbook</h2>
             <form onSubmit={handleSubmit}>
-                <h2>Add new cookbook</h2>
                 <label htmlFor="title">Title</label>
-                <input type="text" name="title" onChange={handleChange} />
+                <input type="text" name="title" value={newCookbook.value} onChange={handleChange} />
                 <label htmlFor="author">Author</label>
-                <input type="text" name="author" onChange={handleChange} />
+                <input type="text" name="author" value={newCookbook.value} onChange={handleChange} />
                 <label htmlFor="description">Description</label>
-                <input type="text" name="description" onChange={handleChange} />
+                <input type="text" name="description" value={newCookbook.value} onChange={handleChange} />
                 <label htmlFor="publicationDate">Publication Date</label>
-                <input type="text" name="publicationDate" onChange={handleChange} />
+                <input type="text" name="publicationDate" value={newCookbook.value} onChange={handleChange} />
                 <input type="submit" value="Add Cookbook" />
-                <Link to="/cookbooks">Back to Cookbooks</Link>      
             </form>
+            <Link to="/cookbooks">Back to Cookbooks</Link>      
             {errors.Title && <p className="error">Title: {errors.Title}</p>}
             {errors.Author && <p className="error">Author: {errors.Author}</p>}
             {errors.Description && <p className="error">Description: {errors.Description}</p>}

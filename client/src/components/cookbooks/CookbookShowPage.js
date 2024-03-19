@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const CookBookShowPage = (props) => {
-    console.log(props)
     const [cookbook, setCookbook] = useState({})
     
 
