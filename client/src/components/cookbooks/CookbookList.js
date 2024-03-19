@@ -4,7 +4,6 @@ import CookbookTile from "./CookbookTile"
 
 const CookbookList = props => {
     const [cookbooks, setCookbooks] = useState([])
-    const [errors, setErrors] = useState({})
 
     const getCookbooks = async () => {
         try{
@@ -25,11 +24,9 @@ const CookbookList = props => {
         getCookbooks()
     }, [])
 
-    // 
-
     const cookbookTiles = cookbooks.map(cookbookObject => {
         const { id, title, author, description, publicationDate } = cookbookObject
-        return <CookbookTile key={id} title={title} author={author} description={description} publicationDate={publicationDate} />
+        return <CookbookTile key={id} id={id} title={title} author={author} description={description} publicationDate={publicationDate} />
       })
 
     return (

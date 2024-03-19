@@ -14,6 +14,15 @@ cookbooksRouter.get("/", async (req,res)=> {
     }
 })
 
+cookbooksRouter.get("/:id", async (req,res)=> {
+    try {
+        const cookbooks = await Cookbook.query().findById(req.params.id)
+        return res.status(200).json({ cookbook: cookbooks})
+    }catch(err) {
+        return res.status(500).json({ errors:err})
+    }
+})
+
 cookbooksRouter.post("/", async (req, res) => {
     const { body } = req
     const { title, author, description, publicationDate } = body

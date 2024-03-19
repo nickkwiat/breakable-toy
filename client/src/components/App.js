@@ -12,6 +12,7 @@ import TopBar from "./layout/TopBar";
 
 import CookbookForm from "./cookbooks/CookbookForm";
 import CookbookList from "./cookbooks/cookbookList";
+import CookBookShowPage from "./cookbooks/CookbookShowPage";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -35,6 +36,7 @@ const App = (props) => {
         <Route exact path="/" component={CookbookList} />
         <Route exact path="/cookbooks" component={CookbookList} />
         <Route exact path="/cookbooks/new" component={CookbookForm} />
+        <Route exact path="/cookbooks/:id" component={CookBookShowPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>

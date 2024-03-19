@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import translateServerErrors from "../../services/translateServerErrors.js"
 
 const CookbookForm = () => {
@@ -82,7 +82,8 @@ const CookbookForm = () => {
                 <input type="text" name="description" onChange={handleChange} />
                 <label htmlFor="publicationDate">Publication Date</label>
                 <input type="text" name="publicationDate" onChange={handleChange} />
-                <input type="submit" value="Add Cookbook" />      
+                <input type="submit" value="Add Cookbook" />
+                <Link to="/cookbooks">Back to Cookbooks</Link>      
             </form>
             {errors.Title && <p className="error">Title: {errors.Title}</p>}
             {errors.Author && <p className="error">Author: {errors.Author}</p>}
