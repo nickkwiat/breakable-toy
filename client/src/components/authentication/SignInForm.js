@@ -58,8 +58,6 @@ const SignInForm = () => {
           throw error;
         }
         const userData = await response.json();
-        alert("userData: ", userData);
-        console.log("userData: ", userData);
         setShouldRedirect(true);
       } catch (err) {
         console.error(`Error in fetch: ${err.message}`);
