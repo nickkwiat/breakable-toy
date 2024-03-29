@@ -5,10 +5,10 @@ const CookbookTile = ({id, title, author, description}) => {
     const CookbookPath = `/cookbooks/${id}`
     return (
         <Link to={CookbookPath}>
-            <div>
+            <div className="item">
                 <h2>{title}</h2>
-                <h3>{author}</h3>
-                <p>{description}</p>
+                <h4>{author}</h4>
+                <p id="cookbookDescription">{description}</p>
             </div>
         </Link>
     )
