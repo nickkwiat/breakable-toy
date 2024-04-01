@@ -10,9 +10,12 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 
+import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import CookbookForm from "./cookbooks/CookbookForm";
-import CookbookList from "./cookbooks/cookbookList";
+import CookbookList from "../components/cookbooks/CookbookList";
 import CookBookShowPage from "./cookbooks/CookbookShowPage";
+import UserHomePage from "./User/UserHomePage";
+
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -33,9 +36,10 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/" component={CookbookList} />
-        <Route exact path="/cookbooks" component={CookbookList} />
-        <Route exact path="/cookbooks/new" component={CookbookForm} />
+        <AuthenticatedRoute exact path="/" component={CookbookList} user={currentUser} />
+        <AuthenticatedRoute exact path="/profile" component={UserHomePage} user={currentUser} />
+        <AuthenticatedRoute exact path="/cookbooks/new" component={CookbookForm} user={currentUser} />
+
         <Route exact path="/cookbooks/:id" component={CookBookShowPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />

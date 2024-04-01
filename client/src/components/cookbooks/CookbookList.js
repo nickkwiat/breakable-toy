@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import CookbookTile from "./CookbookTile"
 
-const CookbookList = props => {
+
+const CookbookList = ({user}) => {
+    
+    const unauthenticatedListItems = null
+
+    const authenticatedListItems = [
+        <Link to="/cookbooks/new" className="button">Add a Cookbook</Link>] 
+
     const [cookbooks, setCookbooks] = useState([])
 
     const getCookbooks = async () => {
@@ -33,7 +40,7 @@ const CookbookList = props => {
         <div>
             <h1>List of Cookbooks</h1>
             {cookbookTiles}
-            <Link to="/cookbooks/new">Add a Cookbook</Link>
+            {user ? authenticatedListItems : unauthenticatedListItems}
         </div>
     )
 }
