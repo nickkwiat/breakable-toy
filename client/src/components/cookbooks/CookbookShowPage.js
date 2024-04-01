@@ -30,7 +30,7 @@ const CookBookShowPage = (props) => {
             <h3> By {cookbook.author}</h3>
             <p>{cookbook.description}</p>
             <p> Published: {cookbook.publicationDate}</p>
-            <Link to="/cookbooks">Back to Cookbooks</Link>
+            <Link to="/">Back to Cookbooks</Link>
         </div>
     )
 }

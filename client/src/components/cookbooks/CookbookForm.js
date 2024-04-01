@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-import { useHistory, Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import translateServerErrors from "../../services/translateServerErrors.js"
 
 const CookbookForm = () => {
 
-    const history = useHistory()
 
     const [newCookbook, setNewCookbook] = useState({
         title: "",
@@ -42,7 +41,6 @@ const CookbookForm = () => {
                 }
             }
             clearForm()
-            history.push("/cookbooks")
             return true
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
@@ -50,12 +48,17 @@ const CookbookForm = () => {
         }
     }
 
+    const [redirect, setRedirect] = useState(false)
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         await postCookbook(newCookbook)
-
+        setRedirect(true)
     }
 
+    if (redirect){
+        return <Redirect to="/" />
+    }
 
     const clearForm = () => {
         setNewCookbook({
