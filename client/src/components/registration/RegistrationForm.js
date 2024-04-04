@@ -9,6 +9,7 @@ import translateServerErrors from "../../services/translateServerErrors";
 const RegistrationForm = () => {
   const [userPayload, setUserPayload] = useState({
     email: "",
+    username: "",
     password: "",
     passwordConfirmation: "",
   });
@@ -20,7 +21,7 @@ const RegistrationForm = () => {
   const validateInput = (payload) => {
     setErrors({});
     setServerErrors({});
-    const { email, password, passwordConfirmation } = payload;
+    const { email, username, password, passwordConfirmation } = payload;
     const emailRegexp = config.validation.email.regexp.emailRegex;
     let newErrors = {};
     if (!email.match(emailRegexp)) {
@@ -29,6 +30,13 @@ const RegistrationForm = () => {
         email: "is invalid",
       };
     }
+
+    if (username.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        username: "is required",
+      };
+    } 
 
     if (password.trim() == "") {
       newErrors = {
@@ -57,6 +65,7 @@ const RegistrationForm = () => {
     }
     return false;
   };
+
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -106,8 +115,25 @@ const RegistrationForm = () => {
         <div>
           <label>
             Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+            <input 
+            type="text" 
+            name="email"
+            value={userPayload.email} 
+            onChange={onInputChange} 
+            />
             <FormError error={errors.email} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Username
+            <input
+              type="text"
+              name="username"
+              value={userPayload.username}
+              onChange={onInputChange}
+            />
+            <FormError error={errors.username} />
           </label>
         </div>
         <div>

@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-import { useHistory, Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import translateServerErrors from "../../services/translateServerErrors.js"
 
 const CookbookForm = () => {
 
-    const history = useHistory()
 
     const [newCookbook, setNewCookbook] = useState({
         title: "",
@@ -42,7 +41,6 @@ const CookbookForm = () => {
                 }
             }
             clearForm()
-            history.push("/cookbooks")
             return true
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
@@ -50,12 +48,17 @@ const CookbookForm = () => {
         }
     }
 
+    const [redirect, setRedirect] = useState(false)
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         await postCookbook(newCookbook)
-
+        setRedirect(true)
     }
 
+    if (redirect){
+        return <Redirect to="/" />
+    }
 
     const clearForm = () => {
         setNewCookbook({
@@ -78,9 +81,9 @@ const CookbookForm = () => {
                 <input type="text" name="description" value={newCookbook.value} onChange={handleChange} />
                 <label htmlFor="publicationDate">Publication Date</label>
                 <input type="text" name="publicationDate" value={newCookbook.value} onChange={handleChange} />
-                <input type="submit" value="Add Cookbook" />
+                <input type="submit" value="Add Cookbook" className="button"/>
             </form>
-            <Link to="/cookbooks">Back to Cookbooks</Link>      
+            <Link className="button" to="/">Back to Cookbooks</Link>      
             {errors.Title && <p className="error">Title: {errors.Title}</p>}
             {errors.Author && <p className="error">Author: {errors.Author}</p>}
             {errors.Description && <p className="error">Description: {errors.Description}</p>}

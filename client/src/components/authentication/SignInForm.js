@@ -57,7 +57,7 @@ const SignInForm = () => {
           const error = new Error(errorMessage);
           throw error;
         }
-        const userData = await response.json();
+        // const userData = await response.json();
         setShouldRedirect(true);
       } catch (err) {
         console.error(`Error in fetch: ${err.message}`);
@@ -75,6 +75,7 @@ const SignInForm = () => {
   if (shouldRedirect) {
     location.href = "/";
   }
+
 
   return (
     <div className="grid-container" onSubmit={onSubmit}>
