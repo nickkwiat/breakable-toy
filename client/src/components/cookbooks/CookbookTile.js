@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CookbookTile = ({id, title, author, description}) => {
+const CookbookTile = ({id, title, author, description, className}) => {
+    console.log(className) 
     const CookbookPath = `/cookbooks/${id}`
     return (
         <Link to={CookbookPath}>

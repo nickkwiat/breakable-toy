@@ -12,6 +12,8 @@ const CookbookList = ({user}) => {
         <Link to="/cookbooks/new" className="button">Add a Cookbook</Link>] 
 
     const [cookbooks, setCookbooks] = useState([])
+    const[ displayClass, setDisplayClass ] = useState("defaultDisplay")
+
 
     const getCookbooks = async () => {
         try{
@@ -46,10 +48,9 @@ const CookbookList = ({user}) => {
         getCookbooks()
     }, [])
 
-
     const cookbookTiles = cookbooks.map(cookbookObject => {
         const { id, title, author, description, publicationDate } = cookbookObject
-        return <CookbookTile key={id} id={id} title={title} author={author} description={description} publicationDate={publicationDate} />
+        return <CookbookTile key={id} id={id} title={title} author={author} description={description} publicationDate={publicationDate} className={displayClass}/>
       })
 
     return (
