@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import CookbookTile from "./CookbookTile"
 
 
+
 const CookbookList = ({user}) => {
     
     const unauthenticatedListItems = null
@@ -24,27 +25,28 @@ const CookbookList = ({user}) => {
             }
             const body = await response.json()
             setCookbooks(body.cookbooks)
-            getDisplayClass()
-            console.log(cookbookTiles.length)
+            getDisplay(body.cookbooks.length);
         } catch(error){
             console.error(`Error in fetch: ${error.message}`)
         }
-    } 
+    }
+
+    const [itemDisplay, setItemDisplay] = useState(null)
+
+    const getDisplay = async () => {
+        if(cookbooks.length === 1){
+            setItemDisplay("oneItem")
+    } else if(cookbooks.length === 2){
+        setItemDisplay("twoItems")
+    } else if(cookbooks.length === 3){
+        setItemDisplay("threeItems")
+    } else {setItemDisplay("fourItems")}
+    
+}
 
     useEffect(()=> {
         getCookbooks()
     }, [])
-
-    const getDisplayClass = () => {
-        console.log(cookbookTiles.length)
-        if (cookbookTiles.length === 1) {
-            setDisplayClass("xOne")
-        } else if (cookbookTiles.length === 2) {
-            setDisplayClass("xTwo")
-        } else if (cookbookTiles.length === 3) {
-            setDisplayClass("xThree")
-        } else { setDisplayClass("xFour") }
-    }
 
     const cookbookTiles = cookbooks.map(cookbookObject => {
         const { id, title, author, description, publicationDate } = cookbookObject

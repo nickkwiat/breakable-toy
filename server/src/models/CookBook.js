@@ -5,6 +5,22 @@ class Cookbook extends Model {
         return 'cookbooks'
     } 
 
+    static get relationMappings() {
+        const { Category } = require("./index.js")
+
+        return {
+            category: {
+                relations: Model.BelongsToOneRelation,
+                modelsClass: Category,
+                join: {
+                    from: "cookbooks.categoryId",
+                    to: "categories.id"
+                }
+            }
+
+        }
+    }
+
     static get jsonSchema() {
         return {
             type: 'object',
