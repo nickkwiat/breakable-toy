@@ -17,7 +17,6 @@ class Category extends Model {
                     to: "cookbooks.categoryId"
                 }
             }
-
         }
     }
 }
