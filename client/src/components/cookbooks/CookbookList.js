@@ -12,8 +12,6 @@ const CookbookList = ({user}) => {
         <Link to="/cookbooks/new" className="button">Add a Cookbook</Link>] 
 
     const [cookbooks, setCookbooks] = useState([])
-    const[ displayClass, setDisplayClass ] = useState("defaultDisplay")
-
 
     const getCookbooks = async () => {
         try{
@@ -25,24 +23,10 @@ const CookbookList = ({user}) => {
             }
             const body = await response.json()
             setCookbooks(body.cookbooks)
-            getDisplay(body.cookbooks.length);
         } catch(error){
             console.error(`Error in fetch: ${error.message}`)
         }
     }
-
-    const [itemDisplay, setItemDisplay] = useState(null)
-
-    const getDisplay = async () => {
-        if(cookbooks.length === 1){
-            setItemDisplay("oneItem")
-    } else if(cookbooks.length === 2){
-        setItemDisplay("twoItems")
-    } else if(cookbooks.length === 3){
-        setItemDisplay("threeItems")
-    } else {setItemDisplay("fourItems")}
-    
-}
 
     useEffect(()=> {
         getCookbooks()
@@ -50,13 +34,18 @@ const CookbookList = ({user}) => {
 
     const cookbookTiles = cookbooks.map(cookbookObject => {
         const { id, title, author, description, publicationDate } = cookbookObject
-        return <CookbookTile key={id} id={id} title={title} author={author} description={description} publicationDate={publicationDate} className={displayClass}/>
+        return <CookbookTile key={id} id={id} title={title} author={author} description={description} publicationDate={publicationDate}/>
       })
 
     return (
         <div>
-            <h1>List of Cookbooks</h1>
-            {cookbookTiles}
+            <h1>Cookbooks</h1>
+            <div className="scrolling-wrapper">
+                <img src="https://images.unsplash.com/photo-1597528662465-55ece5734101?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" id="scrollbar-background"/>
+                <p className="categoryDisplayName">Savory Place Holder</p>
+                {cookbookTiles}
+            </div>
+            
             {user ? authenticatedListItems : unauthenticatedListItems}
         </div>
     )
