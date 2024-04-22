@@ -13,54 +13,153 @@
   tab-size: 4;
 }
 
+body {
+  background-color: #97d2fb;
+  overflow: auto;
+}
+
 h1 {
   font-size: 3em;
   text-align: center;
 }
 
+
 h2 {
-  font-size: 2em;
-  text-align: left;
+    font-size: 2em;
+    text-align: left;
+    word-wrap: break-word;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  height: 200px;
-  background-color: rgb(91, 215, 237);
-  padding: 5% 0;
+// Univseral themes across display sizes
+.top-bar {
+  background-color: #172a3a;
 }
 
-#cookbookContainer {
+.scrolling-wrapper {
+  position: relative;
   display: flex;
-  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
   overflow-x: auto;
-  align-items: center;
-  width: 100%;
+  overflow-y: hidden;
+
+  padding: 1rem 1rem;
+  max-width: 100%;
+  height: 320px;
+  margin: 0 auto;
 }
 
-.item {
-  flex: 1 0 auto; // Allow the item to grow and fill the container
-  display: inline-block;
-  justify-content: center;
-  background-color: rgb(228, 241, 244);
-  padding: 5%;
-  border: 0px solid black;
-  border-radius: 25% 10%;
-  margin: 10px;
-  padding: 10px;
-  box-sizing: border-box;
-  // min-width: 25%; // Minimum width of the item
-  width: 100%; // Full width of the item
-  height: 200px; // Fixed height
-  overflow: hidden; // Add scrollbars if content overflows
+#scrollbar-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.75;
 }
 
-#cookbookDescription {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 5%;
+.categoryDisplayName {
+  position: absolute;
+  justify-self: start;
+  top: 10px; 
+  left: 10px; 
+  color:#f6f3f3;
+  font-family: 'Lucida Handwriting', 'Brush Script MT', Cursive, Arial, sans-serif;
+  font-size: 25px;
 }
+
+.tile {
+  width: 240px;
+  height: 180px;
+  background-color: #172a3a;
+  border-radius: 10px;
+  text-wrap: auto;
+  overflow: auto;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  padding: 5px;
+
+    .bookTitle{
+    padding: 0px, 5px;
+    color: #97D2FB;
+    }
+    
+    .bookAuthor {
+      padding: 0px, 5px;
+      color: #97D2FB;
+    }
+    
+    .bookDescription {
+      padding: 0px, 5px;
+      color: #97D2FB;
+    }
+}
+
+
+
+
+// // medium devices to large devices
+// @media screen and (min-width: 60em) {
+//   .scrolling-wrapper {
+//     position: relative;
+//     display: flex;
+//     flex-wrap: nowrap;
+//     justify-content: space-between;
+//     align-items: center;
+//     overflow-x: auto;
+//     overflow-y: hidden;
+
+//     padding: 1rem 1rem;
+//     max-width: 1200px;
+//     min-width: 320px;
+//     margin: 0 auto;
+
+//     #scrollbar-background {
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       z-index: -1;
+//       opacity: 0.75;
+//     }
+
+//     .tile {
+
+//       display: flex;
+//       flex: 1 0 calc(25% - 1em);
+//       flex-direction: column;
+//       justify-content: space-between;
+
+//       overflow: auto;
+//       background-color: #97d2fb;
+
+//       margin: 60px, 20px, 20px, 5px;
+//       padding: 1rem;
+//       border: 1px solid #ccc;
+//       border-radius: 10px 10px 0 0; 
+//       border: 1px solid #ccc;
+//       opacity: 0.9;
+//     }
+//   }
+// }
+
+
+// // small devices
+//   @media screen and (min-width: 40em) {
+// .scrolling-wrapper {
+//   display: flex;
+//   flex-wrap: nowrap;
+//   justify-content: space-between;
+//   overflow-x: auto;
+//   overflow-y: hidden;
+
+//   .tile {
+//     flex: 1 0 calc(25% - 1em);
+//   }
+// }
+// }
+
+
