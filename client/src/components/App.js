@@ -12,7 +12,8 @@ import TopBar from "./layout/TopBar";
 
 import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import CookbookForm from "./cookbooks/CookbookForm";
-import CookbookList from "../components/cookbooks/CookbookList";
+import CookbookListAU from "./cookbooks/CookbookList-AU";
+import CookbookList from "./cookbooks/CookbookList";
 import CookBookShowPage from "./cookbooks/CookbookShowPage";
 import UserHomePage from "./User/UserHomePage";
 
@@ -27,21 +28,21 @@ const App = (props) => {
       setCurrentUser(null);
     }
   };
-
   useEffect(() => {
     fetchCurrentUser();
   }, []);
-
+  
   return (
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-
         <AuthenticatedRoute exact path="/profile" component={UserHomePage} user={currentUser} />
         <AuthenticatedRoute exact path="/cookbooks/new" component={CookbookForm} user={currentUser} />
-        <Route>
+        <AuthenticatedRoute exact path="/cookbooks" component={CookbookListAU} user={currentUser} />
+        {/* <Route>
           <CookbookList exact path="/" component={CookbookList} user={currentUser}/>
-        </Route>
+        </Route> */}
+        <Route exact path="/" component={CookbookList} user={currentUser} />
         <Route exact path="/cookbooks/:id" component={CookBookShowPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />

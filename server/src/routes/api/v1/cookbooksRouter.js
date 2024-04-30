@@ -14,11 +14,13 @@ cookbooksRouter.get("/", async (req,res)=> {
     }
 })
 
-cookbooksRouter.get("/:id", async (req,res)=> {
+cookbooksRouter.get('/:id', async (req,res)=> {
     try {
-        const cookbooks = await Cookbook.query().findById(req.params.id)
-        return res.status(200).json({ cookbook: cookbooks})
+        const cookbook = await Cookbook.query().findById(req.params.id)
+        console.log(cookbook)
+        return res.status(200).json({ cookbook: cookbook})
     }catch(err) {
+        console.log(err)
         return res.status(500).json({ errors:err})
     }
 })
