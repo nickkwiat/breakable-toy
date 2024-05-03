@@ -14,7 +14,8 @@
 }
 
 body {
-  background-color: #97d2fb;
+  
+  background-image: linear-gradient(to right,#97d2fb,  #d5e8f5 ) ;
   overflow: auto;
 }
 
@@ -33,53 +34,99 @@ h2 {
 // Univseral themes across display sizes
 .top-bar {
   background-color: #172a3a;
+  
 }
 
-.scrolling-wrapper {
-  position: relative;
+// Prior to tutorial playthrough
+// .scrolling-wrapper {
+//   position: relative;
+//   display: flex;
+//   flex-wrap: nowrap;
+//   // justify-content: space-between;
+//   justify-content: space-evenly;
+//   align-items: center;
+//   // overflow-x: auto;
+//   overflow-x: scroll;
+//   overflow-y: hidden;
+
+//   padding: 1rem 1rem;
+//   max-width: 100%;
+//   height: 320px;
+//   margin: 0 auto;
+// }
+
+
+// Container for tutorial attempt
+
+.arrow {
+  border: solid black;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.back {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  margin: 0 0 0 270px;
+}
+
+.forward  {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  margin: 0 270px 0 0;
+}
+
+.forward, .back {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;;
+}
+.scrolling_Bar {
+  width:1000px;
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  // justify-content: space-evenly; suggested by Correy
-  align-items: center;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: scroll;
+
+
+  justify-content: space-evenly;
 
   padding: 1rem 1rem;
-  max-width: 100%;
   height: 320px;
   margin: 0 auto;
+
+
 }
 
-#scrollbar-background {
-  position: absolute;
-  top: 0;
-  left: 0;
+.scrolling_Bar::-webkit-scrollbar {
+  display: none;
+}
+
+.scrolling_Bar div {
   width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.75;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+  padding: 10px;
+  flex: none;
 }
 
-.categoryDisplayName {
-  position: absolute;
-  justify-self: start;
-  top: 10px; 
-  left: 10px; 
-  color:#f6f3f3;
-  font-family: 'Lucida Handwriting', 'Brush Script MT', Cursive, Arial, sans-serif;
-  font-size: 25px;
+.scrolling_Bar-wrap {
+  display: flex;
+  align-items: center;
 }
+
 
 .tile {
   width: 240px;
   height: 180px;
+  filter: grayscale(100%);
+  transition: transform 0.5s;
+  opacity: .7;
   background-color: #172a3a;
   border-radius: 10px;
   text-wrap: auto;
   overflow: auto;
-  margin-top: 60px;
-  margin-bottom: 20px;
+  margin: 60px 0 20px 0;
   padding: 5px;
 
     .bookTitle{
@@ -98,6 +145,61 @@ h2 {
     }
 }
 
+.tile:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+// Container for tutorial attempt
+
+#scrollbar-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  z-index: -1;
+  opacity: 0.75;
+}
+
+.categoryDisplayName {
+  position: absolute;
+  justify-self: start;
+  top: 10px; 
+  left: 10px; 
+  color:#f6f3f3;
+  font-family: 'Lucida Handwriting', 'Brush Script MT', Cursive, Arial, sans-serif;
+  font-size: 25px;
+}
+
+
+// .tile {
+//   width: 240px;
+//   height: 180px;
+//   background-color: #172a3a;
+//   border-radius: 10px;
+//   text-wrap: auto;
+//   overflow: auto;
+//   margin-top: 60px;
+//   margin-bottom: 20px;
+//   padding: 5px;
+
+//     .bookTitle{
+//     padding: 0px, 5px;
+//     color: #97D2FB;
+//     }
+    
+//     .bookAuthor {
+//       padding: 0px, 5px;
+//       color: #97D2FB;
+//     }
+    
+//     .bookDescription {
+//       padding: 0px, 5px;
+//       color: #97D2FB;
+//     }
+// }  
 
 
 
