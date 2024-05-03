@@ -7,9 +7,7 @@ const cookbooksRouter = new express.Router()
 
 cookbooksRouter.get("/", async (req,res)=> {
     try {
-        const categories = await Category.query()
         const cookbooks = await Cookbook.query()
-        console.log("categories", categories)
         return res.status(200).json({ cookbooks: cookbooks})
     }catch(err) {
         return res.status(500).json({ errors:err})

@@ -37,27 +37,6 @@ h2 {
   
 }
 
-// Prior to tutorial playthrough
-// .scrolling-wrapper {
-//   position: relative;
-//   display: flex;
-//   flex-wrap: nowrap;
-//   // justify-content: space-between;
-//   justify-content: space-evenly;
-//   align-items: center;
-//   // overflow-x: auto;
-//   overflow-x: scroll;
-//   overflow-y: hidden;
-
-//   padding: 1rem 1rem;
-//   max-width: 100%;
-//   height: 320px;
-//   margin: 0 auto;
-// }
-
-
-// Container for tutorial attempt
-
 .arrow {
   border: solid black;
   border-width: 0 6px 6px 0;
@@ -82,19 +61,17 @@ h2 {
   width: 30px;
   height: 30px;;
 }
+
 .scrolling_Bar {
   width:1000px;
   display: flex;
   overflow-x: scroll;
-
 
   justify-content: space-evenly;
 
   padding: 1rem 1rem;
   height: 320px;
   margin: 0 auto;
-
-
 }
 
 .scrolling_Bar::-webkit-scrollbar {
@@ -151,8 +128,6 @@ h2 {
   opacity: 1;
 }
 
-// Container for tutorial attempt
-
 #scrollbar-background {
   position: absolute;
   top: 0;
@@ -172,36 +147,6 @@ h2 {
   font-family: 'Lucida Handwriting', 'Brush Script MT', Cursive, Arial, sans-serif;
   font-size: 25px;
 }
-
-
-// .tile {
-//   width: 240px;
-//   height: 180px;
-//   background-color: #172a3a;
-//   border-radius: 10px;
-//   text-wrap: auto;
-//   overflow: auto;
-//   margin-top: 60px;
-//   margin-bottom: 20px;
-//   padding: 5px;
-
-//     .bookTitle{
-//     padding: 0px, 5px;
-//     color: #97D2FB;
-//     }
-    
-//     .bookAuthor {
-//       padding: 0px, 5px;
-//       color: #97D2FB;
-//     }
-    
-//     .bookDescription {
-//       padding: 0px, 5px;
-//       color: #97D2FB;
-//     }
-// }  
-
-
 
 // // medium devices to large devices
 // @media screen and (min-width: 60em) {
