@@ -1,5 +1,5 @@
 import express from "express";
-import {Cookbook} from "../../../models/index.js"
+import {Category, Cookbook} from "../../../models/index.js"
 import objection from "objection"
 const { ValidationError } = objection
 
@@ -7,7 +7,9 @@ const cookbooksRouter = new express.Router()
 
 cookbooksRouter.get("/", async (req,res)=> {
     try {
+        const categories = await Category.query()
         const cookbooks = await Cookbook.query()
+        console.log("categories", categories)
         return res.status(200).json({ cookbooks: cookbooks})
     }catch(err) {
         return res.status(500).json({ errors:err})
@@ -17,7 +19,6 @@ cookbooksRouter.get("/", async (req,res)=> {
 cookbooksRouter.get('/:id', async (req,res)=> {
     try {
         const cookbook = await Cookbook.query().findById(req.params.id)
-        console.log(cookbook)
         return res.status(200).json({ cookbook: cookbook})
     }catch(err) {
         console.log(err)
@@ -27,8 +28,9 @@ cookbooksRouter.get('/:id', async (req,res)=> {
 
 cookbooksRouter.post("/", async (req, res) => {
     const { body } = req
-    const { title, author, description, publicationDate } = body
-
+    const { title, author, categoryId, description, publicationDate } = body
+    console.log(body)
+    
     try {
         const newCookbook = await Cookbook.query().insertAndFetch(body)
         return res.status(201).json({cookbook: newCookbook})

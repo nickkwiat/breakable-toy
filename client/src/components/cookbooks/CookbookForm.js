@@ -7,6 +7,7 @@ const CookbookForm = () => {
 
     const [newCookbook, setNewCookbook] = useState({
         title: "",
+        categoryId:"",
         author: "",
         description: "",
         publicationDate: ""
@@ -15,6 +16,7 @@ const CookbookForm = () => {
     const [errors, setErrors] = useState({})
 
     const handleChange = (event) => {
+        console.log("event.target.name", event.target.value)
         setNewCookbook({
             ...newCookbook,
             [event.target.name]: event.target.value
@@ -52,6 +54,9 @@ const CookbookForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        console.log("pre parseInt", newCookbook)
+        newCookbook.categoryId = parseInt(newCookbook.categoryId)
+        console.log("post parseInt", newCookbook)
         await postCookbook(newCookbook)
         setRedirect(true)
     }
@@ -63,6 +68,7 @@ const CookbookForm = () => {
     const clearForm = () => {
         setNewCookbook({
             title: "",
+            categoryId:"",
             author: "",
             description: "",
             publicationDate: ""
@@ -74,7 +80,16 @@ const CookbookForm = () => {
             <h2>Add new cookbook</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title</label>
-                <input type="text" name="title" value={newCookbook.value} onChange={handleChange} />
+                <input type="text" name="title" value={newCookbook.title} onChange={handleChange} />
+
+                <label htmlFor="category">Category</label>
+                <select name="categoryId" value={newCookbook.categoryId} onChange={handleChange}>
+                    <option value="1">Sweet</option>
+                    <option value="2">Savory</option>
+                    <option value="3">Drinks</option>
+                    <option value="4">Miscellaneous</option>
+                </select>               
+
                 <label htmlFor="author">Author</label>
                 <input type="text" name="author" value={newCookbook.value} onChange={handleChange} />
                 <label htmlFor="description">Description</label>
@@ -85,6 +100,7 @@ const CookbookForm = () => {
             </form>
             <Link className="button" to="/">Back to Cookbooks</Link>      
             {errors.Title && <p className="error">Title: {errors.Title}</p>}
+            {errors.Title && <p className="error">Category: {errors.Title}</p>}
             {errors.Author && <p className="error">Author: {errors.Author}</p>}
             {errors.Description && <p className="error">Description: {errors.Description}</p>}
             {errors.PublicationDate && <p className="error">Publication Date: {errors.PublicationDate}</p>}  

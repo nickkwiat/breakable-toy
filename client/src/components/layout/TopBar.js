@@ -5,21 +5,23 @@ import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
-    <li key="sign-in">
+    <li className="topBarButton" key="sign-in">
       <Link to="/user-sessions/new">Sign In</Link>
     </li>,
-    <li key="sign-up">
+    <li className="topBarButton" key="sign-up">
       <Link to="/users/new" className="button">
         Sign Up
       </Link>
-    </li>,
+    </li>
   ];
 
-
   const authenticatedListItems = [
-    <li key="sign-out">
+    <li className="topBarButton">
+        <Link to="/cookbooks/new" className="button">Add New Cookbook</Link>
+      </li>,
+    <li className="topBarButton" key="sign-out">
       <SignOutButton />
-    </li>,
+    </li>
   ];
 
   return (

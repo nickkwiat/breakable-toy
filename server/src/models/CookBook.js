@@ -27,10 +27,10 @@ class Cookbook extends Model {
             required: ['title', 'author'],
             properties: {
                 id: {type: 'integer'},
-                title: { type: 'string', minLength: 1, maxLength: 100},
-                author: { type: 'string', minLength: 1, maxLength: 100},
+                title: { type: 'string', minLength: 1, maxLength: 500},
+                author: { type: 'string', minLength: 1, maxLength: 500},
                 categoryId: { type: 'integer'},
-                description: { type: 'string', minLength: 1, maxLength: 200},
+                description: { type: 'string', minLength: 1},
                 publicationDate: { type: 'string'}
             }
         }

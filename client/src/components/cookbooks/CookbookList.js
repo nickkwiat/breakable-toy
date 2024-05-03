@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import React, { useState, useEffect, useRef } from "react"
 import CookbookTile from "./CookbookTile"
 
 
 
 const CookbookList = ({user}) => {
     
-    const unauthenticatedListItems = null
-
-    const authenticatedListItems = [
-        <Link to="/cookbooks/new" className="button">Add a Cookbook</Link>] 
-
     const [cookbooks, setCookbooks] = useState([])
 
     const getCookbooks = async () => {
@@ -33,21 +27,56 @@ const CookbookList = ({user}) => {
     }, [])
 
     const cookbookTiles = cookbooks.map(cookbookObject => {
-        const { id, title, author, description, publicationDate } = cookbookObject
-        return <CookbookTile key={id} id={id} title={title} author={author} description={description} publicationDate={publicationDate}/>
+        const { id, title, author, categoryId, description, publicationDate } = cookbookObject
+        return <CookbookTile key={id} id={id} title={title} author={author} categoryId={categoryId} description={description} publicationDate={publicationDate}/>
       })
+
+    const scrollContainerRef = useRef(); 
+
+    const [scrollIntervalId, setScrollIntervalId] = useState(null)
+
+    const scrollBack = () => {
+        const scrollContainer = scrollContainerRef.current
+        if (scrollContainer) {
+            const id = setInterval(() => {
+            scrollContainer.scrollBy({ left: -200, behavior: 'smooth' })
+            }, 100)
+            setScrollIntervalId(id)
+        }
+    }
+
+    const scrollForward = () => {
+        const scrollContainer = scrollContainerRef.current
+        if (scrollContainer) {
+            const id = setInterval(() => {
+            scrollContainer.scrollBy({ left: 200, behavior: 'smooth' })
+            }, 100)
+            setScrollIntervalId(id)
+        }
+    }
+
+        const stopScroll = () => {
+        if (scrollIntervalId) {
+            clearInterval(scrollIntervalId)
+            setScrollIntervalId(null)
+        }
+    };
 
     return (
         <div>
-            <h1>Cookbooks</h1>
-            <div className="scrolling-wrapper">
-                <img src="https://images.unsplash.com/photo-1597528662465-55ece5734101?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" id="scrollbar-background"/>
-                <p className="categoryDisplayName">Savory Place Holder</p>
-                {cookbookTiles}
+                <h1>Cookbooks</h1>
+            <div className="scrolling_Bar-wrap">
+                <p><i className="arrow back" onMouseDown={scrollBack} onMouseUp={stopScroll} onMouseLeave={stopScroll}></i></p>
+                    <img src="https://images.unsplash.com/photo-1597528662465-55ece5734101?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" id="scrollbar-background"/>
+                    <p className="categoryDisplayName">Savory Place Holder</p>
+               
+                <div className="scrolling_Bar" ref={scrollContainerRef}>
+                    {cookbookTiles}
+                </div>
+
+                <p><i className="arrow forward" onMouseDown={scrollForward} onMouseUp={stopScroll} onMouseLeave={stopScroll}></i></p>
             </div>
-            
-            {user ? authenticatedListItems : unauthenticatedListItems}
-        </div>
+        </div>    
     )
 }
 
