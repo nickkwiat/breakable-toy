@@ -10,8 +10,8 @@ class Category extends Model {
 
         return {
             cookbooks: {
-                relations: Model.HasManyRelation,
-                modelsClass: Cookbook,
+                relation: Model.HasManyRelation,
+                modelClass: Cookbook,
                 join: {
                     from: "categories.id",
                     to: "cookbooks.categoryId"

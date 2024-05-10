@@ -33,30 +33,22 @@ h2 {
 
 // Univseral themes across display sizes
 .top-bar {
-  background-color: #172a3a;
-  
+  background-color: #172a3a; 
 }
 
-// Prior to tutorial playthrough
-// .scrolling-wrapper {
-//   position: relative;
-//   display: flex;
-//   flex-wrap: nowrap;
-//   // justify-content: space-between;
-//   justify-content: space-evenly;
-//   align-items: center;
-//   // overflow-x: auto;
-//   overflow-x: scroll;
-//   overflow-y: hidden;
-
-//   padding: 1rem 1rem;
-//   max-width: 100%;
-//   height: 320px;
-//   margin: 0 auto;
-// }
+.masterContainer {
+  margin:1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
 
 
-// Container for tutorial attempt
+
+
 
 .arrow {
   border: solid black;
@@ -113,45 +105,44 @@ h2 {
 .scrolling_Bar-wrap {
   display: flex;
   align-items: center;
+  gap: 5rem;
+  
+  .tile {
+    width: 240px;
+    height: 180px;
+    filter: grayscale(100%);
+    transition: transform 0.5s;
+    opacity: .7;
+    background-color: #172a3a;
+    border-radius: 10px;
+    text-wrap: auto;
+    overflow: auto;
+    padding: 5px;
+  
+      .bookTitle{
+      padding: 0px, 5px;
+      color: #97D2FB;
+      }
+      
+      .bookAuthor {
+        padding: 0px, 5px;
+        color: #97D2FB;
+      }
+      
+      .bookDescription {
+        padding: 0px, 5px;
+        color: #97D2FB;
+      }
+  }
 }
 
 
-.tile {
-  width: 240px;
-  height: 180px;
-  filter: grayscale(100%);
-  transition: transform 0.5s;
-  opacity: .7;
-  background-color: #172a3a;
-  border-radius: 10px;
-  text-wrap: auto;
-  overflow: auto;
-  margin: 60px 0 20px 0;
-  padding: 5px;
-
-    .bookTitle{
-    padding: 0px, 5px;
-    color: #97D2FB;
-    }
-    
-    .bookAuthor {
-      padding: 0px, 5px;
-      color: #97D2FB;
-    }
-    
-    .bookDescription {
-      padding: 0px, 5px;
-      color: #97D2FB;
-    }
-}
 
 .tile:hover {
   filter: grayscale(0%);
   transform: scale(1.1);
   opacity: 1;
 }
-
-// Container for tutorial attempt
 
 #scrollbar-background {
   position: absolute;
@@ -161,47 +152,16 @@ h2 {
   height: 300px;
   z-index: -1;
   opacity: 0.75;
+  object-fit: cover;
 }
 
 .categoryDisplayName {
-  position: absolute;
-  justify-self: start;
-  top: 10px; 
-  left: 10px; 
+  align-self: flex-start;
+  margin: 1rem;
   color:#f6f3f3;
   font-family: 'Lucida Handwriting', 'Brush Script MT', Cursive, Arial, sans-serif;
   font-size: 25px;
 }
-
-
-// .tile {
-//   width: 240px;
-//   height: 180px;
-//   background-color: #172a3a;
-//   border-radius: 10px;
-//   text-wrap: auto;
-//   overflow: auto;
-//   margin-top: 60px;
-//   margin-bottom: 20px;
-//   padding: 5px;
-
-//     .bookTitle{
-//     padding: 0px, 5px;
-//     color: #97D2FB;
-//     }
-    
-//     .bookAuthor {
-//       padding: 0px, 5px;
-//       color: #97D2FB;
-//     }
-    
-//     .bookDescription {
-//       padding: 0px, 5px;
-//       color: #97D2FB;
-//     }
-// }  
-
-
 
 // // medium devices to large devices
 // @media screen and (min-width: 60em) {

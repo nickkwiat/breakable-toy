@@ -1,4 +1,4 @@
-const Model = require("./Model")
+const Model = require("./Model.js")
 
 class Cookbook extends Model {
     static get tableName () {
@@ -7,11 +7,10 @@ class Cookbook extends Model {
 
     static get relationMappings() {
         const { Category } = require("./index.js")
-
         return {
             category: {
-                relations: Model.BelongsToOneRelation,
-                modelsClass: Category,
+                relation: Model.BelongsToOneRelation,
+                modelClass: Category,
                 join: {
                     from: "cookbooks.categoryId",
                     to: "categories.id"

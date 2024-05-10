@@ -11,6 +11,8 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 
 import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
+import CategoriesIndex from "./categories/CategoriesIndex";
+import CategoryShowPage from "./categories/CategoryShowPage";
 import CookbookForm from "./cookbooks/CookbookForm";
 import CookbookList from "./cookbooks/CookbookList";
 import CookBookShowPage from "./cookbooks/CookbookShowPage";
@@ -37,10 +39,9 @@ const App = (props) => {
       <Switch>
         <AuthenticatedRoute exact path="/profile" component={UserHomePage} user={currentUser} />
         <AuthenticatedRoute exact path="/cookbooks/new" component={CookbookForm} user={currentUser} />
-        {/* <Route>
-          <CookbookList exact path="/" component={CookbookList} user={currentUser}/>
-        </Route> */}
-        <Route exact path="/" component={CookbookList} user={currentUser} />
+        <Route exact path="cookbooks" component={CookbookList} user={currentUser} />
+        <Route exact path="/" component={CategoriesIndex} />
+        <Route exact path="/categories/:id" component={CategoryShowPage} />
         <Route exact path="/cookbooks/:id" component={CookBookShowPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
