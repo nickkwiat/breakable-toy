@@ -6,17 +6,21 @@
  * @param {Knex} knex
  */
 exports.up = async (knex) => {
-    return knex.schema.createTable("cookbooks", table => {
+    return knex.schema.createTable("reviews", table => {
         table.bigIncrements("id").notNullable()
         table.string("title").notNullable()
-        table.string("author").notNullable()
-        table.string("description")
-        table.string("publicationDate")
+        table.string("content").notNullable()
+        table.integer("rating").notNullable()
         table
-            .bigInteger("categoryId")
+            .bigInteger("userId")
             .unsigned()
             .index()
-            .references("categories.id")
+            .references("users.id")
+        table
+            .bigInteger("cookbookId")
+            .unsigned()
+            .index()
+            .references("cookbooks.id")
         table
             .timestamp("createdAt")
             .notNullable()
@@ -32,5 +36,5 @@ exports.up = async (knex) => {
  * @param {Knex} knex
  */
 exports.down = async (knex) => {
-    return knex.schema.dropTableIfExists("cookbooks")
+    return knex.schema.dropTableIfExists("reviews")
 };

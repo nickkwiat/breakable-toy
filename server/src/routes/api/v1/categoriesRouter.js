@@ -9,7 +9,6 @@ categoriesRouter.get("/", async (req,res)=> {
         for (let category of categories) {
             category.cookbooks = await category.$relatedQuery("cookbooks")
         }
-        console.log(categories)
         return res.status(200).json({ categories: categories})
     }catch(err) {
         return res.status(500).json({ errors:err})
@@ -19,9 +18,7 @@ categoriesRouter.get("/", async (req,res)=> {
 categoriesRouter.get('/:id', async (req,res)=> {
     try {
         const category = await Category.query().findById(req.params.id)
-        console.log("category.name", category.name)
         category.cookbooks = await category.$relatedQuery("cookbooks")
-        console.log("cateogry.cookbooks", category.cookbooks)
         return res.status(200).json({ category: category})
     }catch(err) {
         console.log(err)
