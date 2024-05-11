@@ -3,7 +3,6 @@ import CategoryCookbookTile from "./CategoryCookbookTile";
 
 const CategoryTile = ({id, name, cookbooks}) => {
     const categoryPath = `/categories/${id}`
-console.log(cookbooks)
 
     const categoryCookbookTiles = cookbooks.map((cookbookObject) => {
         const { id, title, author, categoryId, description, publicationDate } = cookbookObject
@@ -44,9 +43,11 @@ console.log(cookbooks)
     };
 
     return (
-        <a href={categoryPath}>
+        
             <div className="masterContainer" style={{ backgroundImage: `url(${testUrlImage})` }} >
-                <p className="categoryDisplayName">{name}</p> 
+                <a href={categoryPath}>
+                    <p className="categoryDisplayName">{name}</p> 
+                </a>
                 <div className="scrolling_Bar-wrap"> 
                     <p><i className="arrow back" onMouseDown={scrollBack} onMouseUp={stopScroll} onMouseLeave={stopScroll}></i></p>
                     <div className="scrolling_Bar" ref={scrollContainerRef}>
@@ -55,7 +56,7 @@ console.log(cookbooks)
                 <p><i className="arrow forward" onMouseDown={scrollForward} onMouseUp={stopScroll} onMouseLeave={stopScroll}></i></p>
                 </div>
             </div>
-        </a>
+        
     )
 }
 
