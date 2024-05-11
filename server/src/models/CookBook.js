@@ -15,8 +15,15 @@ class Cookbook extends Model {
                     from: "cookbooks.categoryId",
                     to: "categories.id"
                 }
+            },
+            user: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: User,
+                join: {
+                    from: "cookbooks.userId",
+                    to: "users.id"
+                }
             }
-
         }
     }
 
@@ -30,6 +37,7 @@ class Cookbook extends Model {
                 author: { type: 'string', minLength: 1, maxLength: 500},
                 categoryId: { type: 'integer'},
                 description: { type: 'string', minLength: 1},
+                userId: { type: 'integer'},
                 publicationDate: { type: 'string'}
             }
         }

@@ -1,6 +1,7 @@
 // include all of your models here using CommonJS requires
-const User = require("./User.js");
 const Category = require("./Category.js")
 const Cookbook = require("./Cookbook.js")
+const Review = require("./Review.js")
+const User = require("./User.js");
 
-module.exports = { Category, Cookbook, User };
+module.exports = { Category, Cookbook, Review, User };
