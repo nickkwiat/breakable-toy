@@ -24,12 +24,16 @@ exports.up = async (knex) => {
         table.string("title").notNullable()
         table.string("author").notNullable()
         table.string("description")
-        table.string("publicationDate")
         table
             .bigInteger("categoryId")
             .unsigned()
             .index()
             .references("categories.id")
+        table
+            .bigInteger("userId")
+            .unsigned()
+            .index()
+            .references("users.id")
         table
             .timestamp("createdAt")
             .notNullable()

@@ -16,6 +16,9 @@ import CategoryShowPage from "./categories/CategoryShowPage";
 import CookbookForm from "./cookbooks/CookbookForm";
 import CookbookList from "./cookbooks/CookbookList";
 import CookBookShowPage from "./cookbooks/CookbookShowPage";
+import ReviewForm from "./reviews/ReviewForm";
+import ReviewIndex from "./reviews/ReviewIndex";
+import ReviewShowPage from "./reviews/ReviewShowPage";
 import UserHomePage from "./User/UserHomePage";
 
 
@@ -39,10 +42,13 @@ const App = (props) => {
       <Switch>
         <AuthenticatedRoute exact path="/profile" component={UserHomePage} user={currentUser} />
         <AuthenticatedRoute exact path="/cookbooks/new" component={CookbookForm} user={currentUser} />
-        <Route exact path="cookbooks" component={CookbookList} user={currentUser} />
+        <AuthenticatedRoute exact path="/cookbooks/:id/reviews/new" component={ReviewForm} user={currentUser} />
+        <Route exact path="/cookbooks" component={CookbookList} user={currentUser} />
         <Route exact path="/" component={CategoriesIndex} />
         <Route exact path="/categories/:id" component={CategoryShowPage} />
         <Route exact path="/cookbooks/:id" component={CookBookShowPage} />
+        <Route exact path="/reviews" component={ReviewIndex} />
+        <Route exact path="/reviews/:id" component={ReviewShowPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
