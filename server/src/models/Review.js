@@ -6,7 +6,7 @@ class Review extends Model {
     } 
 
     static get relationMappings() {
-        const { User } = require("./index.js")
+        const { User, Cookbook } = require("./index.js")
         return {
             user: {
                 relation: Model.BelongsToOneRelation,
@@ -16,7 +16,6 @@ class Review extends Model {
                     to: "users.id"
                 }
             },
-
             cookbook: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: Cookbook,
