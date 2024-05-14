@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-
+import ReviewTile from './ReviewTile';
 
 const ReviewIndex = (props) => {
 
-    const [Reviews, setReviews] = useState()
+    const [reviews, setReviews] = useState()
 
     const getReviews = async () => {
         try {
-            const response = await fetch("api/api/v1/reviews")
+            const response = await fetch("/api/v1/reviews")
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 const error = new Error(errorMessage)
                 throw error
             }
             const body = await response.json()
+            console.log("REviews: ",body.reviews)
             setReviews(body.reviews)
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
@@ -25,16 +26,10 @@ const ReviewIndex = (props) => {
     }, [])
 
 
-    const reviewTiles = Reviews.map((review) => {
+    const reviewTiles = reviews?.map((reviewObject) => {
+        const {id, title, content, user, cookbook} = reviewObject
         return (
-            <ReviewTile
-                key={review.id}
-                id={review.id}
-                title={review.title}
-                content={review.content}
-                cookbook={review.cookbook}
-                user={review.user}
-            />
+            <ReviewTile key={id} id={id} title={title} content={content} userName={user?.username} cookbookTitle={cookbook.title} />
         
         )
     })
