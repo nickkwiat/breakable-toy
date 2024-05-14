@@ -7,9 +7,8 @@ reviewsRouter.get("/", async (req,res)=> {
     try {
         const reviews = await Review.query()
         for(let review of reviews) {
-            review.cookbook = await review.$relatedQuery("cookbooks")
-            review.user = await review.$relatedQuery("users")
-            console.log(review.cookbook)
+            review.cookbook = await review.$relatedQuery("cookbook")
+            review.user = await review.$relatedQuery("user")
         }
         return res.status(200).json({ reviews: reviews})
     }catch(err) {

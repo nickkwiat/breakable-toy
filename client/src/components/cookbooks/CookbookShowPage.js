@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import CookbookReviewTile from "./cookbookReviewTile";
 
 const CookBookShowPage = (props) => {
     const [cookbook, setCookbook] = useState({})
@@ -29,9 +30,13 @@ const CookBookShowPage = (props) => {
     console.log(cookbook)
     console.log(cookbook.reviews)
 
-    const cookbookReviewTiles = cookbook.reviews?.map((reviewtile) => {
+    const noReviews = <p>Be the first to review this cookbook</p>
+
+    const cookbookReviewTiles = cookbook.reviews?.map((reviewObject) => {
+      const {id, title, content, user, cookbookId} = reviewObject
+      console.log("reviewObject.user", reviewObject.user)
       return(
-        <CookbookReviewTile />
+        <CookbookReviewTile key={id} id={id} title={title} content={content} userName={user?.username} cookbookId={cookbookId} />
       )
     })
 
@@ -42,15 +47,15 @@ const CookBookShowPage = (props) => {
       <p>{cookbook.description}</p>
       <p>Category: {categoryName}</p>
       <div>
+        {cookbookReviewTiles && cookbookReviewTiles.length > 0 ? cookbookReviewTiles : noReviews}
+      </div>
+      <div>
         <ul>
           <li><Link to="/">Back to Cookbooks</Link></li>
           <li><Link to={`/cookbooks/${cookbook.id}/reviews/new`}>Add a Review</Link></li>
         </ul>
       </div>
-      <div>
-        {cookbookReviewTiles}
       </div>
-  </div>
     )
 }
 

@@ -24,6 +24,9 @@ cookbooksRouter.get('/:id', async (req,res)=> {
     try {
         const cookbook = await Cookbook.query().findById(req.params.id)
         cookbook.reviews = await cookbook.$relatedQuery("reviews")
+        for(let review of cookbook.reviews) {
+            review.user = await review.$relatedQuery("user")
+        }
         cookbook.category = await cookbook.$relatedQuery("category")
         console.log(cookbook.reviews)
         return res.status(200).json({ cookbook: cookbook})
