@@ -7,8 +7,8 @@ const CategoryCookbookTile = ({id, title, author, description}) => {
        <a href={CookbookPath}>
             <div className="tile">
                 <h3 className="bookTitle">{title}</h3>
-                <p className="bookAuthor">{author}</p>
-                <p className="bookDescription">{description}</p>
+                <p className="bookAuthor">by {author}</p>
+                {/* <p className="bookDescription">{description}</p> */}
             </div>
         </a>
     )

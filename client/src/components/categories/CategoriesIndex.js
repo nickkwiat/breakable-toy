@@ -26,7 +26,8 @@ const CategoriesIndex = (props) => {
     }, [])
 
     const categoryTiles = categories.map((categoryObject) => {
-        const { id, name, cookbooks } = categoryObject
+        const { id, name, cookbooks } = categoryObject;
+        if (cookbooks.length === 0) {return null}
         return <CategoryTile key={id} id={id} name={name} cookbooks={cookbooks}/>
     })
 

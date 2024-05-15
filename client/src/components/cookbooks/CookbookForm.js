@@ -9,8 +9,7 @@ const CookbookForm = () => {
         title: "",
         categoryId:"",
         author: "",
-        description: "",
-        publicationDate: ""
+        description: ""
     })
 
     const [errors, setErrors] = useState({})
@@ -70,10 +69,16 @@ const CookbookForm = () => {
             title: "",
             categoryId:"",
             author: "",
-            description: "",
-            publicationDate: ""
+            description: ""
         })
     }
+
+    const categories = [
+        {id: 1, name: "Sweet"},
+        {id: 2, name: "Savory"},
+        {id: 3, name: "Drinks"},
+        {id: 4, name: "Miscellaneous"}
+    ]
 
     return (
         <div>
@@ -84,18 +89,17 @@ const CookbookForm = () => {
 
                 <label htmlFor="category">Category</label>
                 <select name="categoryId" value={newCookbook.categoryId} onChange={handleChange}>
-                    <option value="1">Sweet</option>
-                    <option value="2">Savory</option>
-                    <option value="3">Drinks</option>
-                    <option value="4">Miscellaneous</option>
-                </select>               
+                {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                    {category.name}
+                    </option>
+                ))}
+                </select>   
 
                 <label htmlFor="author">Author</label>
                 <input type="text" name="author" value={newCookbook.value} onChange={handleChange} />
                 <label htmlFor="description">Description</label>
                 <input type="text" name="description" value={newCookbook.value} onChange={handleChange} />
-                <label htmlFor="publicationDate">Publication Date</label>
-                <input type="text" name="publicationDate" value={newCookbook.value} onChange={handleChange} />
                 <input type="submit" value="Add Cookbook" className="button"/>
             </form>
             <Link className="button" to="/">Back to Cookbooks</Link>      
@@ -103,7 +107,6 @@ const CookbookForm = () => {
             {errors.Title && <p className="error">Category: {errors.Title}</p>}
             {errors.Author && <p className="error">Author: {errors.Author}</p>}
             {errors.Description && <p className="error">Description: {errors.Description}</p>}
-            {errors.PublicationDate && <p className="error">Publication Date: {errors.PublicationDate}</p>}  
         </div>   
     )
 }
