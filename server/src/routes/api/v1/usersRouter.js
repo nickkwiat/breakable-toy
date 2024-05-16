@@ -21,4 +21,16 @@ usersRouter.post("/", async (req, res) => {
   }
 });
 
+usersRouter.get("/:id", async (req, res) => {
+  try {
+    const user = await User.query().findById(req.params.id)
+    user.reviews = await user.$relatedQuery("reviews")
+    console.log("user reviews", user.reviews)
+    return res.status(200).json({ user:user})
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({ errors: err})
+  }
+});
+
 export default usersRouter;

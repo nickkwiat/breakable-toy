@@ -40,7 +40,7 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <AuthenticatedRoute exact path="/profile" component={UserHomePage} user={currentUser} />
+        <AuthenticatedRoute exact path="/myProfile" component={UserHomePage} user={currentUser} />
         <AuthenticatedRoute exact path="/cookbooks/new" component={CookbookForm} user={currentUser} />
         <AuthenticatedRoute exact path="/cookbooks/:id/reviews/new" component={ReviewForm} user={currentUser} />
         <Route exact path="/cookbooks" component={CookbookList} user={currentUser} />
