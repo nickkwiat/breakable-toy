@@ -46,7 +46,6 @@ class Cookbook extends Model {
                 categoryId: { type: 'integer'},
                 description: { type: 'string', minLength: 1},
                 userId: { type: 'integer'},
-                publicationDate: { type: 'string'}
             }
         }
     } 

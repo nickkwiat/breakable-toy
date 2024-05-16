@@ -23,7 +23,7 @@ exports.up = async (knex) => {
         table.bigIncrements("id").notNullable()
         table.string("title").notNullable()
         table.string("author").notNullable()
-        table.string("description")
+        table.text("description")
         table
             .bigInteger("categoryId")
             .unsigned()
@@ -43,11 +43,13 @@ exports.up = async (knex) => {
             .notNullable()
             .defaultTo(knex.fn.now())
     })
+    console.log("created cookbooks table")
 };
 
 /**
  * @param {Knex} knex
  */
 exports.down = async (knex) => {
+    console.log("dropped cookbooks table")
     return knex.schema.dropTableIfExists("cookbooks")
 };
