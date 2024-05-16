@@ -14,7 +14,6 @@
 }
 
 body {
-  
   background-image: linear-gradient(to right,#97d2fb,  #d5e8f5 ) ;
   overflow: auto;
 }
@@ -108,7 +107,12 @@ h2 {
   gap: 5rem;
   
   .tile {
-    width: 240px;
+      flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+    width: 20vm;
     height: 180px;
     filter: grayscale(100%);
     transition: transform 0.5s;
@@ -118,7 +122,10 @@ h2 {
     text-wrap: auto;
     overflow: auto;
     padding: 5px;
-  
+    
+    p {
+      text-align: center;;
+    }
       .bookTitle{
       padding: 0px, 5px;
       color: #97D2FB;
@@ -135,8 +142,6 @@ h2 {
       }
   }
 }
-
-
 
 .tile:hover {
   filter: grayscale(0%);
@@ -162,6 +167,104 @@ h2 {
   font-family: 'Lucida Handwriting', 'Brush Script MT', Cursive, Arial, sans-serif;
   font-size: 25px;
 }
+
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviewContent {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #172a3a;
+  border-radius: 10px;
+  color: #f6f3f3;
+}
+
+.reviewContent a {
+  color: #fff;
+}
+
+.pageHead {
+  flex-direction: column;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  width: 80vw;
+  border-bottom: 1px solid #f6f3f3;
+}
+
+.showPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cookbookContents {
+justify-content: center;
+border-bottom: solid 2px rgb(186, 223, 237);
+margin-top: 3rem;
+padding: 1rem;
+width: 90vw;
+}
+
+.cookbookReviewContent .tileContent{
+  // margin: 1rem;
+  // padding: 1rem;
+  // border-top: solid 2px rgb(186, 223, 237);
+  padding: 1rem;
+  margin: 1rem;
+  border:solid 2px rgb(17, 34, 41);
+  border-radius: 20px;
+  align-content: center;
+  text-align: center;
+  background-color: #060606;
+  color:#fff;
+  opacity: .80;
+}
+.cookbookReviewContent h3 {
+  margin-top: 2rem;
+}
+
+#noReviews {
+  margin: 1rem;
+  padding:1rem;
+  border:solid 2px rgb(17, 34, 41);
+  border-radius: 20px;
+  align-content: center;
+  text-align: center;
+  background-color: #060606;
+  color:#fff;
+  opacity: .80;
+}
+
+.showPageNav ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  
+  li {
+    padding: 1rem;
+    margin: 1rem;
+    border:solid 2px rgb(17, 34, 41);
+    border-radius: 20px;
+    align-content: center;
+    text-align: center;
+    background-color: #060606;
+    color:#fff;
+    opacity: .80;
+  }
+}
+// .cookbookReviewContent > *:not(:first-child) {
+//   border-top: solid 2px rgb(186, 223, 237);
+// }
 
 // // medium devices to large devices
 // @media screen and (min-width: 60em) {

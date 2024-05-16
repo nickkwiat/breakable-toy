@@ -1,14 +1,14 @@
 import React from "react";
 
-const ReviewTile = ({id, title, cookbookTitle, userName, content}) => {
+const ReviewTile = ({cookbookId, title, cookbookTitle, userName, content}) => {
 
     return (
-        <div>
-            <div>
-            <h3>{cookbookTitle} : {title}</h3>
+            <div >
+            <div className="tileContent reviewContent">
+            <a href={`/cookbooks/${cookbookId}`}><h3>{cookbookTitle} : {title}</h3></a>
             </div>
-            <div>
-                <p>posted by: {userName} </p>
+            <div className="reviewContent">
+                <p className="authorByUser">posted by: {userName} </p>
                 <p>{content}</p>
             </div>
         </div>
@@ -16,3 +16,4 @@ const ReviewTile = ({id, title, cookbookTitle, userName, content}) => {
 }
 
 export default ReviewTile
+ 
