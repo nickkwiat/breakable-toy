@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
+  
+  const userId = user?.id
+
   const unauthenticatedListItems = [
     <li className="topBarButton" key="sign-in">
       <Link to="/user-sessions/new">Sign In</Link>
@@ -23,7 +26,6 @@ const TopBar = ({ user }) => {
       <SignOutButton />
     </li>
   ];
-
   return (
     <div className="top-bar">
       <div className="top-bar-left">
@@ -33,7 +35,7 @@ const TopBar = ({ user }) => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/profile">Profile</Link>  
+            <Link to={`/myProfile`}>My Profile</Link>  
           </li>
         </ul>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import translateServerErrors from "../../services/translateServerErrors.js"
-import { Redirect, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 
 const ReviewForm = ({user}) => {
     const {id: cookbookId } = useParams()
@@ -79,30 +79,39 @@ const ReviewForm = ({user}) => {
 
 
   return (
-    <div>
-      <h1>Review Form</h1>
-      <div>
-        <form>
-            <label htmlFor="title">Title</label>
-            <input
-                type="text"
-                name="title"
-                onChange={handleChange}
-                value={newReview.title}
-                />
-            <label htmlFor="content">Content</label>
-            <input
-                type="text"
-                name="content"
-                onChange={handleChange}
-                value={newReview.content}
-                />
-            <input type="submit" value="Submit" onClick={handleSubmit} />
-        </form>
-        <p>{errors.title}</p>
-        <p>{errors.content}</p>
-      </div>
-
+    <div className="formContainer">
+        <div className="formContent"> 
+            <h1>Review Form</h1>
+            <div>
+            <form onSubmit={handleSubmit}>
+                    <label className="formLabel" htmlFor="title">Title</label>
+                    <input
+                        className="formField"
+                        type="text"
+                        name="title"
+                        onChange={handleChange}
+                        value={newReview.title}
+                        />
+                    <label className="formLabel" htmlFor="content">Content</label>
+                    <input
+                        className="formDescription"
+                        type="text"
+                        name="content"
+                        onChange={handleChange}
+                        value={newReview.content}
+                        />
+                     <input className="formButton" type="submit" value="Add Cookbook"/>
+                </form>
+                <p>{errors.title}</p>
+                <p>{errors.content}</p>
+                <div className="showPageNav">
+                    <ul>
+                        <li><Link to="/">Back to Categories</Link></li>
+                        <li><Link to="/cookbooks">All Cookbooks</Link></li>
+                    </ul>
+                </div>  
+            </div>
+        </div>
     </div>
   );
 }

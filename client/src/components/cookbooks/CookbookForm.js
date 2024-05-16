@@ -99,19 +99,19 @@ const CookbookForm = () => {
                     <label className="formLabel" htmlFor="author">Author</label>
                     <input className="formField" type="text" name="author" value={newCookbook.value} onChange={handleChange} />
                     <label className="formLabel" htmlFor="description">Description</label>
-                    <textarea className="formField" id="formDescription" type="text" name="description" value={newCookbook.value} onChange={handleChange} />
-                    <input id="formButton" type="submit" value="Add Cookbook" className="button"/>
+                    <textarea className="formDescription" type="text" name="description" value={newCookbook.value} onChange={handleChange} />
+                    <input className="formButton" type="submit" value="Add Cookbook" />
                 </form>
                 <div className="showPageNav">
+                {errors.Title && <p className="error">Title: {errors.Title}</p>}
+                {errors.Title && <p className="error">Category: {errors.Title}</p>}
+                {errors.Author && <p className="error">Author: {errors.Author}</p>}
+                {errors.Description && <p className="error">Description: {errors.Description}</p>}
                     <ul>
                         <li><Link to="/">Back to Categories</Link></li>
                         <li><Link to="/cookbooks">All Cookbooks</Link></li>
                     </ul>
                 </div>  
-                {errors.Title && <p className="error">Title: {errors.Title}</p>}
-                {errors.Title && <p className="error">Category: {errors.Title}</p>}
-                {errors.Author && <p className="error">Author: {errors.Author}</p>}
-                {errors.Description && <p className="error">Description: {errors.Description}</p>}
             </div>
         </div>   
     )
