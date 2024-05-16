@@ -27,9 +27,6 @@ const CookBookShowPage = (props) => {
     const category = cookbook.category
     const categoryName = category ? category.name : "";
 
-    console.log(cookbook)
-    console.log(cookbook.reviews)
-
     const noReviews = <Link to={`/cookbooks/${cookbook.id}/reviews/new`}><p id="noReviews">Be the first to review this cookbook</p></Link>
 
     const cookbookReviewTiles = cookbook.reviews?.map((reviewObject) => {

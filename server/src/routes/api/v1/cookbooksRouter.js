@@ -12,10 +12,11 @@ cookbooksRouter.get("/", async (req,res)=> {
     try {
         const cookbooks = await Cookbook.query()
         for(let cookbook of cookbooks) {
-            cookbook.reviews = await cookbooks.$relatedQuery("reviews")
+            cookbook.reviews = await cookbook.$relatedQuery("reviews")
         }
         return res.status(200).json({ cookbooks: cookbooks})
     }catch(err) {
+        console.log(err)
         return res.status(500).json({ errors:err})
     }
 })

@@ -37,5 +37,6 @@ exports.up = async (knex) => {
  * @param {Knex} knex
  */
 exports.down = async (knex) => {
+    console.log("dropped categories table")
     return knex.schema.dropTableIfExists("categories")
 };

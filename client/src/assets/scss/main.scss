@@ -216,9 +216,6 @@ width: 90vw;
 }
 
 .cookbookReviewContent .tileContent{
-  // margin: 1rem;
-  // padding: 1rem;
-  // border-top: solid 2px rgb(186, 223, 237);
   padding: 1rem;
   margin: 1rem;
   border:solid 2px rgb(17, 34, 41);
@@ -245,6 +242,12 @@ width: 90vw;
   opacity: .80;
 }
 
+#noReviews:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+  opacity: 1;
+}
+
 .showPageNav ul {
   list-style-type: none;
   display: flex;
@@ -261,6 +264,65 @@ width: 90vw;
     color:#fff;
     opacity: .80;
   }
+
+  li:hover {
+    filter: grayscale(0%);
+    transform: scale(1.09);
+    opacity: 1;
+  
+  }
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  
+  
+  h2 {
+    text-align: center;
+    align-items: center;
+    margin: 1rem;
+  }
+
+  .formContent {
+    // display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    }
+
+    .formField {
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    #formDescription {
+      margin: 1rem;
+      padding: 1rem;
+      min-height:4em;
+      line-height: 1em;
+      overflow: auto;
+      border-radius: 10px;
+      word-wrap: break-word;
+      resize: vertical;
+    }
+
+    #formButton {
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background-color: #172a3a;
+      color: #f6f3f3;
+      align-self: center;
+    }
+
+    .showPageNav {
+      display: flex; // Add this line
+      justify-content: center; // Add this line
+      align-items: center; // Add this line
+    }
 }
 // .cookbookReviewContent > *:not(:first-child) {
 //   border-top: solid 2px rgb(186, 223, 237);

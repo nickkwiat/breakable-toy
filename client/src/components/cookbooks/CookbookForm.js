@@ -81,32 +81,38 @@ const CookbookForm = () => {
     ]
 
     return (
-        <div>
-            <h2>Add new cookbook</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title</label>
-                <input type="text" name="title" value={newCookbook.title} onChange={handleChange} />
+        <div className="formContainer">
+            <div className="formContent"> 
+                <h2>Add new cookbook</h2>
+                <form onSubmit={handleSubmit}>
+                    <label className="formLabel" htmlFor="title">Title</label>
+                    <input className="formField" type="text" name="title" value={newCookbook.title} onChange={handleChange} />
 
-                <label htmlFor="category">Category</label>
-                <select name="categoryId" value={newCookbook.categoryId} onChange={handleChange}>
-                {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                    {category.name}
-                    </option>
-                ))}
-                </select>   
-
-                <label htmlFor="author">Author</label>
-                <input type="text" name="author" value={newCookbook.value} onChange={handleChange} />
-                <label htmlFor="description">Description</label>
-                <input type="text" name="description" value={newCookbook.value} onChange={handleChange} />
-                <input type="submit" value="Add Cookbook" className="button"/>
-            </form>
-            <Link className="button" to="/">Back to Cookbooks</Link>      
-            {errors.Title && <p className="error">Title: {errors.Title}</p>}
-            {errors.Title && <p className="error">Category: {errors.Title}</p>}
-            {errors.Author && <p className="error">Author: {errors.Author}</p>}
-            {errors.Description && <p className="error">Description: {errors.Description}</p>}
+                    <label className="formLabel" htmlFor="category">Category</label>
+                    <select className="formField" name="categoryId" value={newCookbook.categoryId} onChange={handleChange}>
+                    {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                        {category.name}
+                        </option>
+                    ))}
+                    </select>   
+                    <label className="formLabel" htmlFor="author">Author</label>
+                    <input className="formField" type="text" name="author" value={newCookbook.value} onChange={handleChange} />
+                    <label className="formLabel" htmlFor="description">Description</label>
+                    <textarea className="formField" id="formDescription" type="text" name="description" value={newCookbook.value} onChange={handleChange} />
+                    <input id="formButton" type="submit" value="Add Cookbook" className="button"/>
+                </form>
+                <div className="showPageNav">
+                    <ul>
+                        <li><Link to="/">Back to Categories</Link></li>
+                        <li><Link to="/cookbooks">All Cookbooks</Link></li>
+                    </ul>
+                </div>  
+                {errors.Title && <p className="error">Title: {errors.Title}</p>}
+                {errors.Title && <p className="error">Category: {errors.Title}</p>}
+                {errors.Author && <p className="error">Author: {errors.Author}</p>}
+                {errors.Description && <p className="error">Description: {errors.Description}</p>}
+            </div>
         </div>   
     )
 }
