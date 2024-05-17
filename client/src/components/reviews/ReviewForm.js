@@ -100,7 +100,7 @@ const ReviewForm = ({user}) => {
                         onChange={handleChange}
                         value={newReview.content}
                         />
-                     <input className="formButton" type="submit" value="Add Cookbook"/>
+                     <input className="formButton" type="submit" value="Add Review"/>
                 </form>
                 <p>{errors.title}</p>
                 <p>{errors.content}</p>
