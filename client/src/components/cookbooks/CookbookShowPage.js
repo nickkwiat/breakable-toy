@@ -42,7 +42,7 @@ const CookBookShowPage = (props) => {
           <h2>{cookbook.title}</h2>
           <p> By {cookbook.author}</p>
           <p>{cookbook.description}</p>
-          <div className="cookbookReviewContent">
+          <div>
             {cookbookReviewTiles && cookbookReviewTiles.length > 0 ? cookbookReviewTiles : noReviews}
           </div>
         </div>

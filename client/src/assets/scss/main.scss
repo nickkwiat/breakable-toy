@@ -215,7 +215,7 @@ padding: 1rem;
 width: 90vw;
 }
 
-.cookbookReviewContent .tileContent{
+.cookbookReviewContent {
   padding: 1rem;
   margin: 1rem;
   border:solid 2px rgb(17, 34, 41);
@@ -225,7 +225,9 @@ width: 90vw;
   background-color: #060606;
   color:#fff;
   opacity: .80;
+  list-style: none;
 }
+
 .cookbookReviewContent h3 {
   margin-top: 2rem;
 }
