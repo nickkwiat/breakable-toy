@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import CookbookReviewTile from "./cookbookReviewTile";
+import CookbookReviewTile from "./CookbookReviewTile.js";
 
 const CookBookShowPage = (props) => {
     const [cookbook, setCookbook] = useState({})
