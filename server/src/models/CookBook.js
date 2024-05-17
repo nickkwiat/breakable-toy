@@ -35,6 +35,8 @@ class Cookbook extends Model {
         }
     }
 
+    
+
     static get jsonSchema() {
         return {
             type: 'object',
