@@ -28,8 +28,6 @@ reviewsRouter.get('/:id', async (req,res)=> {
 
 reviewsRouter.post("/", async (req, res) => {
     const { title, content, cookbookId, userId } = req.body
-    console.log("req.body")
-    console.log(req.body)
     try {
         const newReview = await Review.query().insertAndFetch({ title, content, cookbookId, userId })
         return res.status(201).json({review: newReview})

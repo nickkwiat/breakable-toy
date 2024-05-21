@@ -29,7 +29,15 @@ const ReviewIndex = (props) => {
     const reviewTiles = reviews?.map((reviewObject) => {
         const {id, title, content, user, cookbook} = reviewObject
         return (
-            <ReviewTile key={id} id={id} title={title} content={content} userName={user?.username} cookbookTitle={cookbook.title} cookbookId={cookbook.id}/>
+            <ReviewTile 
+            key={id} 
+            id={id} 
+            title={title} 
+            content={content} 
+            userName={user?.username} 
+            cookbookTitle={cookbook.title} 
+            cookbookId={cookbook.id}
+            />
         )
     })
     return (

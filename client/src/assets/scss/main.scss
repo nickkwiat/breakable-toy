@@ -326,10 +326,53 @@ width: 90vw;
       align-items: center; // Add this line
     }
 }
-// .cookbookReviewContent > *:not(:first-child) {
-//   border-top: solid 2px rgb(186, 223, 237);
-// }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
 
+.allCookbooksContainer {
+  display: grid;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+
+.tile.cookbookTile {
+  height: 300px;
+  width:200px;
+  overflow-y: auto;
+  margin: 20px;
+  padding: 20px;
+  border: solid 2px black;
+  border-radius: 10px;
+  background-color: #f6f3f3;
+}
+.aboutMeContainer {
+  display: flex; // This will make the children of .aboutMeContainer share the same row
+ margin: 20px;
+
+  img {
+    width: 25%; // Make the image take up 25% of the width
+    border-radius: 50%;
+    margin: 1rem;
+  }
+
+  .aboutMe {
+    width: 75%; 
+    margin: 1rem;
+  }
+}
+
+.userReview {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-content: center;
+  list-style-type: none;
+  width: 75%;
+}
 // // medium devices to large devices
 // @media screen and (min-width: 60em) {
 //   .scrolling-wrapper {

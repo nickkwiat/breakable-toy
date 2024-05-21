@@ -25,7 +25,9 @@ usersRouter.get("/:id", async (req, res) => {
   try {
     const user = await User.query().findById(req.params.id)
     user.reviews = await user.$relatedQuery("reviews")
-    console.log("user reviews", user.reviews)
+    for(let reviews of user.reviews) {
+      reviews.cookbook = await reviews.$relatedQuery("cookbook")
+    }
     return res.status(200).json({ user:user})
   } catch (err) {
     console.log(err)

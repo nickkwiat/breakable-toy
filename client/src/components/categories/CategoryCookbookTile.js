@@ -8,7 +8,6 @@ const CategoryCookbookTile = ({id, title, author, description}) => {
             <div className="tile">
                 <h3 className="bookTitle">{title}</h3>
                 <p className="bookAuthor">by {author}</p>
-                {/* <p className="bookDescription">{description}</p> */}
             </div>
         </a>
     )

@@ -1,11 +1,13 @@
 
 import React,{ useState, useEffect } from "react";
 
+import UserReviewTile from "./UserReviewTile";
+
 const UserHomePage = ({user}) => {
 
     const {id, username} = user
  
-    const [userReview, setUserReviews] = useState([])
+    const [userReviews, setUserReviews] = useState([])
 
     const getUserReviews = async () => {
 
@@ -17,30 +19,40 @@ const UserHomePage = ({user}) => {
                 throw error
             }
             const body = await response.json()
-            console.log("body", body)
             const user= body.user
             const reviews = user.reviews
-            console.log("reviews", reviews)
             setUserReviews(reviews)
-            
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)    
         }
     }
-
     useEffect(() => {
-        getUserReviews(0)
+        getUserReviews()
     }, [])
     
+    const userReviewTiles = userReviews?.map((review) => {
+        const {id, title, content, cookbook} = review
+        return <UserReviewTile key={id} id={id} title ={title} content={content} cookbook={cookbook}/>
+    })
 
+    const imgUrl = "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
 
         return (
-            <div>
+            <div style={{display: 'flex', flexDirection: 'column', width: '80vw', alignContent: 'center', justifyContent: 'center'}}>
                 <h1>Welcome {username}</h1>
-                <h3>My Reviews</h3>
-                <ul>
-                    <li> REVIEWS GO HERE</li>
-                </ul>
+                <div className="aboutMeContainer" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                    <img src={imgUrl} />
+                    <div className="aboutMe">
+                        <h3>About Me</h3>
+                        <p>My name is {username} and I love to cook! I have been cooking for 10 years and I have a passion for cooking healthy meals. I love to share my recipes with others and I am always looking for new recipes to try. I am excited to be a part of this community and I can't wait to share my recipes with you!</p>
+                    </div>
+                </div>
+                <div className="userReviews" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <h3> Reviews</h3>
+                    <ul>
+                        {userReviewTiles}
+                    </ul>
+                </div>
             </div>
         )
 }
