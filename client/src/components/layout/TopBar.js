@@ -21,10 +21,7 @@ const TopBar = ({ user }) => {
   const authenticatedListItems = [
     <li className="topBarButton">
         <Link to="/cookbooks/new" className="button">Add New Cookbook</Link>
-      {/* </li>,
-          <li className="topBarButton">
-          <Link to="/myProfile" className="button">My Profile</Link>
-        </li>, */}
+      </li>,
     <li className="topBarButton" key="sign-out">
       <SignOutButton />
     </li>
